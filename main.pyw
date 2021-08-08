@@ -24,9 +24,12 @@ class Ui_MainWindow(object):
 
         if text == "KM":
             self.unitButton.setText("MI")
-        elif text == "MI":
-            self.unitButton.setText("KM")
 
+        elif text == "MI":
+            self.unitButton.setText("NM")
+
+        elif text == "NM":
+            self.unitButton.setText("KM")
 
     def on_lat_1(self):
         lat_1 = self.lat_1.toPlainText().strip()

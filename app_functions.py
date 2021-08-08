@@ -3,8 +3,9 @@ from math import radians, cos, sin, asin, sqrt
 EARTH_RADIUS = 6371
 
 _radius = {
-    "MI" : 3959.9, 
     "KM" : 6372.8, 
+    "MI" : 3959.9,
+    "NM" : 3440.0647948164,
 }
 
 def haversine(lat1, lon1, lat2, lon2, is_rads, unit):
