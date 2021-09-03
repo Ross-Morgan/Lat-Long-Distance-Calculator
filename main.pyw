@@ -3,7 +3,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from app_functions import haversine
 
 
-class Ui_MainWindow(object):
+class UIMainWindow(QtWidgets.QMainWindow):
     def on_calculate(self):
 
         lat_1 = float(self.lat_1.toPlainText().strip())
@@ -56,7 +56,7 @@ class Ui_MainWindow(object):
             self.lon_2.moveCursor(QtGui.QTextCursor.MoveOperation.End)
 
 
-    def setupUi(self, MainWindow):
+    def setup_ui(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -215,8 +215,7 @@ class Ui_MainWindow(object):
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
+    ui = UIMainWindow()
+    ui.setup_ui(ui)
+    ui.show()
     sys.exit(app.exec_())
