@@ -7,19 +7,18 @@ Run the build process by running the command 'python setup.py build'
 If everything works well you should find a subdirectory in the build
 subdirectory that contains the files needed to run the application
 """
-
 import sys
 from cx_Freeze import setup, Executable
 
+from pathlib import Path
+import os
 
 SOURCE = "main.pyw"
-OUTPUT = ""
-PYTHONPATH = r"C:\Python39"
+OUTPUT = None
+PYTHONPATH = r"C:\Users\Ross\AppData\Local\Programs\Python\Python39"
 
 # base="Win32GUI" should be used only for Windows GUI app
-base = None
-if sys.platform == "win32":
-    base = "Win32GUI"
+base = "Win32GUI" if sys.platform == "win32" else None
 
 # Inclusion of extra plugins
 # cx_Freeze imports automatically the following plugins depending of the use of
@@ -33,7 +32,7 @@ if sys.platform == "win32":
 include_files = [fr"{PYTHONPATH}\Lib\site-packages\PyQt5\Qt5\plugins\platforms\qwindows.dll"]
 
 build_exe_options = {
-    "excludes": ["tkinter"],
+    "excludes": [],
     "include_files": include_files,
 }
 
@@ -48,7 +47,6 @@ bdist_dmg_options = {
 # executables = [Executable(SOURCE, base=base, target_name=f"{OUTPUT}{'.exe' if (sys.platform == 'win32') and not OUTPUT.endswith('.exe') else ''}")]
 executables = [Executable(SOURCE, base=base, target_name=OUTPUT)]
 
-
 setup(
     name="simple_PyQt5",
     version="0.2",
@@ -60,3 +58,7 @@ setup(
     },
     executables=executables,
 )
+
+NEW_PATH = OUTPUT if OUTPUT else 'main'
+
+Path(os.path.join(os.path.abspath(__file__), f"build/exe.win-amd64-3.9/{NEW_PATH}.exe")).rename(os.path.join(os.path.abspath(__file__), NEW_PATH))
