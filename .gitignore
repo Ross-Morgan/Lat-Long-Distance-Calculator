@@ -2,3 +2,4 @@
 *.pub
 *.exe
 /build
+/dist
