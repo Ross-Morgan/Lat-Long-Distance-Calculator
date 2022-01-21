@@ -13,22 +13,12 @@ from cx_Freeze import setup, Executable
 from pathlib import Path
 import os
 
-SOURCE = "main.pyw"
+SOURCE = "main.py"
 OUTPUT = None
-PYTHONPATH = r"C:\Users\Ross\AppData\Local\Programs\Python\Python39"
+PYTHONPATH = sys.argv[2]
 
-# base="Win32GUI" should be used only for Windows GUI app
 base = "Win32GUI" if sys.platform == "win32" else None
 
-# Inclusion of extra plugins
-# cx_Freeze imports automatically the following plugins depending of the use of
-# some modules:
-# imageformats - QtGui
-# platforms - QtGui
-# mediaservice - QtMultimedia
-# printsupport - QtPrintSupport
-#
-# So, "platforms" is used here for demonstration purposes.
 include_files = [fr"{PYTHONPATH}\Lib\site-packages\PyQt5\Qt5\plugins\platforms\qwindows.dll"]
 
 build_exe_options = {
