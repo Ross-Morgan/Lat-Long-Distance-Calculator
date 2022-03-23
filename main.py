@@ -55,10 +55,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def on_open_location(self):
         pass
 
-<<<<<<< HEAD
-=======
 class UIMainWindow(QtWidgets.QMainWindow):
->>>>>>> 6fb6e0f5c7f59d78dda4910c34f00213b8c5a059
     def on_calculate(self):
         lat_1 = self.lat_1.toPlainText()
         lat_2 = self.lat_2.toPlainText()
@@ -128,19 +125,16 @@ class UIMainWindow(QtWidgets.QMainWindow):
             self.lon_2.moveCursor(QtGui.QTextCursor.MoveOperation.End)
 
 
-<<<<<<< HEAD
     def setup_ui(self):
         self.setObjectName("MainWindow")
         self.resize(550, 350)
         self.lat_1 = QtWidgets.QTextEdit(self)
-=======
     def setup_ui(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 400)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.lat_1 = QtWidgets.QTextEdit(self.centralwidget)
->>>>>>> 6fb6e0f5c7f59d78dda4910c34f00213b8c5a059
         self.lat_1.setGeometry(QtCore.QRect(100, 10, 150, 50))
         self.lat_1.setMaximumSize(QtCore.QSize(150, 50))
         font = QtGui.QFont()
@@ -281,15 +275,9 @@ class UIMainWindow(QtWidgets.QMainWindow):
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
-<<<<<<< HEAD
 
-    ui = MainWindow()
-    ui.show()
-
-    sys.exit(app.exec())
-=======
     ui = UIMainWindow()
     ui.setup_ui(ui)
     ui.show()
+
     sys.exit(app.exec_())
->>>>>>> 6fb6e0f5c7f59d78dda4910c34f00213b8c5a059
