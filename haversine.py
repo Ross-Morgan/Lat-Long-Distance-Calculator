@@ -1,14 +1,16 @@
+from enum import Enum
 from math import radians, cos, sin, asin, sqrt
+from typing import Union
 
-_radius = {
-    "KM" : 6372.8,
-    "MI" : 3959.9,
-    "NM" : 3440.0647948164,
-}
+class Radius(Enum):
+    KM = 6372.8
+    MI = 3959.9
+    NM = 3440.0647948164
 
-def haversine(lat1, lon1, lat2, lon2, is_rads, unit):
+
+def haversine(lat1: float, lon1: float, lat2: float, lon2: float, unit: Union[str, Radius], is_rads: bool = False):
     """Returns distance between lat long coordinates in specified unit"""
-    RADIUS = _radius[unit]
+    RADIUS = Radius[unit]
 
     if not is_rads:
         delta_lat = radians(lat2 - lat1)
