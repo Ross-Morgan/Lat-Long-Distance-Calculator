@@ -2,6 +2,7 @@ from enum import Enum
 from math import radians, cos, sin, asin, sqrt
 from typing import Union
 
+
 class Radius(Enum):
     KM = 6372.8
     MI = 3959.9
